@@ -1,0 +1,295 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(255, 201, 101);
+}
+
+header{
+    padding: 15px;
+}
+
+.header__section{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    background-color: rgb(255, 201, 101);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+}
+
+.main__section{
+    background-color: rgb(150, 104, 45);
+    width: 60%;
+    height: 650px;
+    border:2px solid rgb(26, 20, 13);
+    border-radius: 20px;
+    box-shadow: 1px 1px 25px 1px rgb(0, 0, 0);
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+#div1{
+    border: 1px solid black;
+    border-radius: 15px 0px 0px 0px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#div2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 0px 15px 0px 0px;
+    display:flex;
+
+}
+#div3{
+    border: 1px solid black;
+    border-radius: 0px 0px 0px 15px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#div4{
+    border: 1px solid black;
+    border-radius: 0px 0px 15px 0px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorModal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+    top:0;
+    left:0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.contenedorModal--active{
+    opacity: 1;
+    pointer-events: unset;
+}
+
+.contenedorModal__modal{
+    background-color: rgb(255, 221, 158);
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 70%;
+    box-shadow: 1px 1px 20px 1px black;
+    border:10px solid rgb(150, 104, 45);
+    padding: 15px;
+    overflow-y: scroll;
+    padding: 0px 20px 20px 20px;
+}
+
+.buttonsmodal{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+/*BOTONES*/
+
+#button1{
+    width: 300px;
+    height: 150px;
+    font-size: 2.2rem;
+    background-color: rgb(255, 194, 80);
+    border: 10px solid rgb(95, 58, 9);
+    border-radius: 30px 0px 30px 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#button1:hover{
+    background-color: black;
+    color:white;
+}
+
+#button2{
+    width: 200px;
+    height: 100px;
+    font-size: 2.2rem;
+    background-color: rgb(255, 194, 80);
+    border: 10px solid rgb(95, 58, 9);
+    border-radius: 20px 20px 20px 20px;
+    margin: 0 20px;
+    transition: 0.5s;
+}
+
+#button2:hover{
+    background-color: black;
+    color:wheat;
+}
+
+#button3{
+    width: 200px;
+    height: 100px;
+    font-size: 2.2rem;
+    background-color: rgb(255, 194, 80);
+    border: 10px solid rgb(95, 58, 9);
+    border-radius: 20px 20px 20px 20px;
+    margin: 0 20px;
+    transition: 0.5s;
+}
+
+#button3:hover{
+    background-color: black;
+    color:wheat;
+}
+
+
+
+#button6{
+    width: 300px;
+    height: 150px;
+    font-size: 2.2rem;
+    background-color: rgb(255, 194, 80);
+    border: 10px solid rgb(95, 58, 9);
+    border-radius: 20px 0px 20px 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+/* SECCION PEDIR HELADO */
+.divHeladoInfo{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: white;
+    justify-items: center;
+    padding: 15px;
+    height: 80px;
+    box-shadow: 1px 1px 2px 1px black;
+    margin-top: 20px;
+    transition: 0.3s;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#nombreHelado{
+    align-self: center;
+    text-align: center;
+}
+
+#precioHelado{
+    align-self: center;
+}
+
+#litroHelado{
+    align-self: center;
+}
+
+.divHeladoInfo:hover{
+    background-color: rgb(138, 90, 0);
+    color:whitesmoke;
+}
+
+/* SECCION CARRITO */
+
+.divCarrito{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 75px;
+    font-size: 2.2rem;
+    background-color: rgb(255, 194, 80);
+    border: 10px solid rgb(95, 58, 9);
+    border-radius: 20px 0px 20px 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+.divInfoCarrito{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 200px;
+    background-color: rgb(255, 221, 158);
+    border:3px solid  rgb(95, 58, 9);
+    overflow-y: scroll;
+}
+
+.totalPedido {
+    background-color: white;
+    width: 130px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.totalLimpiar{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+.clearCarrito{
+    background-color: rgb(255, 221, 158);
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 34px;
+    border:3px solid  rgb(95, 58, 9);
+    padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+/* SECCION ESTADO */
+
+#div3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.divEstado1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 75px;
+    font-size: 2.2rem;
+    background-color: rgb(255, 194, 80);
+    border: 10px solid rgb(95, 58, 9);
+    border-radius: 20px 0px 20px 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+
+.divEstado3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+
+}
+
