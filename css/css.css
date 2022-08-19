@@ -5,7 +5,9 @@
 }
 
 body{
-    background-color: rgb(255, 201, 101);
+    background-image: url('../imgs/fondopag.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 header{
@@ -19,7 +21,6 @@ header{
 }
 
 main{
-    background-color: rgb(255, 201, 101);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +28,7 @@ main{
 }
 
 .main__section{
-    background-color: rgb(150, 104, 45);
+    background-color: rgba(150, 104, 45, 0.781);
     width: 60%;
     height: 650px;
     border:2px solid rgb(26, 20, 13);
@@ -91,7 +92,7 @@ main{
 }
 
 .contenedorModal__modal{
-    background-color: rgb(255, 221, 158);
+    background-color: rgb(255, 221, 158, 0.781);
     display: flex;
     flex-direction: column;
     width: 30%;
@@ -115,7 +116,7 @@ main{
     width: 300px;
     height: 150px;
     font-size: 2.2rem;
-    background-color: rgb(255, 194, 80);
+    background-color: rgb(255, 194, 80, 0.781);
     border: 10px solid rgb(95, 58, 9);
     border-radius: 30px 0px 30px 0px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -132,7 +133,7 @@ main{
     width: 200px;
     height: 100px;
     font-size: 2.2rem;
-    background-color: rgb(255, 194, 80);
+    background-color: rgb(255, 194, 80, 0.781);
     border: 10px solid rgb(95, 58, 9);
     border-radius: 20px 20px 20px 20px;
     margin: 0 20px;
@@ -148,7 +149,7 @@ main{
     width: 200px;
     height: 100px;
     font-size: 2.2rem;
-    background-color: rgb(255, 194, 80);
+    background-color: rgb(255, 194, 80, 0.781);
     border: 10px solid rgb(95, 58, 9);
     border-radius: 20px 20px 20px 20px;
     margin: 0 20px;
@@ -166,11 +167,17 @@ main{
     width: 300px;
     height: 150px;
     font-size: 2.2rem;
-    background-color: rgb(255, 194, 80);
+    background-color: rgb(255, 194, 80, 0.781);
     border: 10px solid rgb(95, 58, 9);
     border-radius: 20px 0px 20px 0px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+#button6:hover{
+    background-color: black;
+    color:white;
 }
 
 /* SECCION PEDIR HELADO */
@@ -201,7 +208,7 @@ main{
 }
 
 .divHeladoInfo:hover{
-    background-color: rgb(138, 90, 0);
+    background-color: rgb(138, 90, 0, 0.781);
     color:whitesmoke;
 }
 
@@ -214,7 +221,7 @@ main{
     width: 300px;
     height: 75px;
     font-size: 2.2rem;
-    background-color: rgb(255, 194, 80);
+    background-color: rgb(255, 194, 80, 0.781);
     border: 10px solid rgb(95, 58, 9);
     border-radius: 20px 0px 20px 0px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -226,7 +233,7 @@ main{
     flex-direction: column;
     width: 90%;
     height: 200px;
-    background-color: rgb(255, 221, 158);
+    background-color: rgb(255, 221, 158, 0.781);
     border:3px solid  rgb(95, 58, 9);
     overflow-y: scroll;
 }
@@ -291,5 +298,64 @@ main{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
 
+}
+
+/* li appendeado */
+
+.liashei {
+    text-decoration: none;
+    list-style: none;
+    font-size: larger;
+    padding: 2.5px;
+    margin-left: 5px;
+}
+
+/* modal ir a pagar */
+
+.modalPagar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+    top:0;
+    left:0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modalPagar--active{
+    opacity: 1;
+    pointer-events: unset;
+}
+
+.modalPagar__modal{
+    background-color: rgb(255, 221, 158, 0.781);
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 70%;
+    box-shadow: 1px 1px 20px 1px black;
+    border:10px solid rgb(150, 104, 45);
+    padding: 0px 20px 20px 20px;
+}
+
+.button7{
+    width: 200px;
+    height: 100px;
+    font-size: 2.2rem;
+    background-color: rgb(255, 194, 80, 0.781);
+    border: 10px solid rgb(95, 58, 9);
+    border-radius: 20px 20px 20px 20px;
+    margin: 0 20px;
+    transition: 0.5s;
+}
+
+.button7:hover{
+    background-color: black;
+    color:wheat;
 }
 

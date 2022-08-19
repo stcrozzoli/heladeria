@@ -1,5 +1,57 @@
+// INICIO ESTADO
+const div3 = document.querySelector('#div3')
+
+// CONDICIONAL PARA SECCION 'PEDIDO'
+const crearEstadoOk = () => {
+    div3.innerHTML=`
+        <div class="divEstado1">ESTADO</div>
+        <div class="divEstado2"><img src="./imgs/tildeok.png" width="50px"></div>
+        <div class="divEstado3">Pedido Ok</div>
+    `
+}
+
+const crearEstadoX = () => {
+    div3.innerHTML=`
+    <div class="divEstado1">ESTADO</div>
+    <div class="divEstado2"><img src="./imgs/tildex.png" width="50px"></div>
+    <div class="divEstado3">Pedido mínimo: 3L</div>
+`
+}
+
+const modal = document.querySelector('.contenedorModal__modal')
+const divInfoCarrito = document.querySelector('.divInfoCarrito')
+const totalPedido = document.querySelector ('.totalPedido')
 const sabores = []
 let carrito = []
+let totalPedidoValue = 0
+const carritoLS = localStorage.getItem('compra')
+
+if (carritoLS){
+    const carrito = JSON.parse(carritoLS)
+
+    if (carrito.length >= 3){
+        crearEstadoOk()
+    }
+    else{
+        crearEstadoX()
+    }
+    
+    for (sabor of carrito){
+        const li = document.createElement('li')
+        li.innerHTML = `
+        ${sabor.nombre} $${sabor.precioPorLitro}
+        `
+        divInfoCarrito.append(li)
+        totalPedidoValue += sabor.precioPorLitro
+        totalPedido.innerHTML = `
+                            <p>TOTAL: $${totalPedidoValue}</p>
+        `
+        li.classList.add('liashei')
+    }
+} 
+else{
+    console.log('no hay nada guardado en el carrito')
+}
 
 class Helados{
     constructor (nombre, precio, imagen){
@@ -12,7 +64,6 @@ class Helados{
 // simular el finalizado de la compra
 // guardar en localstorage el carrito
 
-let totalPedidoValue = 0
 
 
 sabores.push(new Helados ('Amarena', 1340, 'imgs/amarena.png'))
@@ -31,11 +82,8 @@ sabores.push(new Helados ('Mascarpone', 1560, 'imgs/mascarpone.png'))
 sabores.push(new Helados ('Tramontana', 1510, 'imgs/tramontana.png'))
 sabores.push(new Helados ('Vainilla', 1490, 'imgs/vainilla.png'))
 
-console.log(sabores)
+// console.log(sabores)
 
-const modal = document.querySelector('.contenedorModal__modal')
-const divInfoCarrito = document.querySelector('.divInfoCarrito')
-const totalPedido = document.querySelector ('.totalPedido')
 
 sabores.forEach((sabor)=>{
     const div = document.createElement('div')
@@ -47,23 +95,26 @@ sabores.forEach((sabor)=>{
     `
     div.classList.add('divHeladoInfo')
     modal.append(div)
-
+    
     div.onclick = () => {
         const li = document.createElement('li')
         li.innerHTML = `
                         ${sabor.nombre} $${sabor.precioPorLitro}
         `
-
+        
         divInfoCarrito.append(li)
         totalPedidoValue += sabor.precioPorLitro
         console.log(totalPedidoValue)
         totalPedido.innerHTML = `
                             <p>TOTAL: $${totalPedidoValue}</p>
         `
-        
-        carrito.push(sabor)
-        console.log(carrito)
+        li.classList.add('liashei')
 
+        carrito.push(sabor)
+        // console.log(carrito)
+        const carritoJSON = JSON.stringify(carrito)
+        localStorage.setItem('compra',carritoJSON)
+        
         if(carrito.length >= 3){
             crearEstadoOk()
         }
@@ -71,11 +122,11 @@ sabores.forEach((sabor)=>{
             crearEstadoX()
         }
     }
-
+    
     
 })
 
-// MODAL CLASS TOGGLE
+// MODAL PEDIDOS
 const buttonRealizarPedido = document.querySelector('#button1')
 const buttonAtrasPedido = document.querySelector('#button2')
 const contenedorModal = document.querySelector('.contenedorModal')
@@ -86,27 +137,6 @@ buttonRealizarPedido.onclick = () => {
 
 buttonAtrasPedido.onclick = () => {
     contenedorModal.classList.toggle('contenedorModal--active')
-}
-
-// CONDICIONAL PARA SECCION 'PEDIDO'
-
-const div3 = document.querySelector('#div3')
-
-const crearEstadoOk = () => {
-    
-    div3.innerHTML=`
-        <div class="divEstado1">ESTADO</div>
-        <div class="divEstado2"><img src="./imgs/tildeok.png" width="50px"></div>
-        <div class="divEstado3">Pedido Ok</div>
-    `
-}
-
-const crearEstadoX = () => {
-    div3.innerHTML=`
-    <div class="divEstado1">ESTADO</div>
-    <div class="divEstado2"><img src="./imgs/tildex.png" width="50px"></div>
-    <div class="divEstado3">Pedido mínimo: 3L</div>
-`
 }
 
 // cleanear carrito
@@ -123,11 +153,18 @@ clearCarrito.onclick = () => {
     <div class="divEstado2"><img src="./imgs/tildex.png" width="50px"></div>
     <div class="divEstado3">Pedido mínimo: 3L</div>
 `
-    localStorage.clear()
+localStorage.clear()
 }
 
-// INICIO ESTADO
-div3.innerHTML=`
-<div class="divEstado1">ESTADO</div>
-<div class="divEstado2"><img src="./imgs/tildex.png" width="50px"></div>
-<div class="divEstado3">Pedido mínimo: 3L</div> `
+// MODAL PAGAR
+const pagar = document.querySelector('#button6')
+const modalPagar = document.querySelector('.modalPagar')
+
+pagar.onclick=()=>{
+    modalPagar.classList.toggle('modalPagar--active')
+}
+
+const button7 = document.querySelector('.button7')
+ button7.onclick = () => {
+    modalPagar.classList.toggle('modalPagar--active')
+ }
