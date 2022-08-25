@@ -1,5 +1,9 @@
 // INICIO ESTADO
 const div3 = document.querySelector('#div3')
+const modalInicio = document.querySelector('.modalInicio')
+setTimeout(()=>{
+    modalInicio.classList.remove('modalInicio--active')
+},2500)
 
 // CONDICIONAL PARA SECCION 'PEDIDO'
 const crearEstadoOk = () => {
@@ -60,11 +64,6 @@ class Helados{
         this.imagen = imagen
     }
 }
-// borrar un item del carrito
-// simular el finalizado de la compra
-// guardar en localstorage el carrito
-
-
 
 sabores.push(new Helados ('Amarena', 1340, 'imgs/amarena.png'))
 sabores.push(new Helados ('Banana Script', 1470, 'imgs/bananasplit.png'))
@@ -81,8 +80,6 @@ sabores.push(new Helados ('Limón', 1640, 'imgs/limon.png'))
 sabores.push(new Helados ('Mascarpone', 1560, 'imgs/mascarpone.png'))
 sabores.push(new Helados ('Tramontana', 1510, 'imgs/tramontana.png'))
 sabores.push(new Helados ('Vainilla', 1490, 'imgs/vainilla.png'))
-
-// console.log(sabores)
 
 
 sabores.forEach((sabor)=>{
@@ -122,8 +119,6 @@ sabores.forEach((sabor)=>{
             crearEstadoX()
         }
     }
-    
-    
 })
 
 // MODAL PEDIDOS
@@ -140,7 +135,6 @@ buttonAtrasPedido.onclick = () => {
 }
 
 // cleanear carrito
-
 const clearCarrito = document.querySelector('.clearCarrito')
 
 clearCarrito.onclick = () => {
@@ -167,4 +161,24 @@ pagar.onclick=()=>{
 const button7 = document.querySelector('.button7')
  button7.onclick = () => {
     modalPagar.classList.toggle('modalPagar--active')
+ }
+
+ const nombre = document.querySelector('#nombre')
+ const apellido = document.querySelector('#apellido')
+ const dni = document.querySelector('#dni')
+ const tipotarjeta = document.querySelector('#tipotarjeta')
+ const numtarjeta = document.querySelector('#numtarjeta')
+ const botonPagar = document.querySelector('#botonPagar')
+
+ botonPagar.onclick=()=>{
+    Toastify({
+       text: 'Pago procesado ✅',
+       duration: 3000,
+       gravity: 'bottom',
+       position: 'right',
+       style:{
+        background: 'green'
+       },
+       className:'toast',
+    }).showToast()
  }
