@@ -613,6 +613,10 @@ label{
 
     }
 
+    body{
+        overflow-y: hidden;
+    }
+
     #logo {
         width: 200px;
     }
