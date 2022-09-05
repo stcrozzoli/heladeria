@@ -3,7 +3,46 @@ const div3 = document.querySelector('#div3')
 const modalInicio = document.querySelector('.modalInicio')
 setTimeout(()=>{
     modalInicio.classList.remove('modalInicio--active')
-},2500)
+},0)
+
+// FUNCION PUSHEAR SABORES
+const pushearSabores = (sabor) =>{
+    const div = document.createElement('div')
+    div.innerHTML = `
+    <img id="imagenHelado" src="${sabor.imagen}" width="50px">
+    <h3 id="nombreHelado">${sabor.nombre}</h3>
+    <h3 id="precioHelado">$${sabor.precioPorLitro}</h3>
+    <h3 id="litroHelado">1L</h4>      
+    `
+    div.classList.add('divHeladoInfo')
+    modal.prepend(div)
+    
+    div.onclick = () => {
+        const li = document.createElement('li')
+        li.innerHTML = `
+                        ${sabor.nombre} $${sabor.precioPorLitro}
+        `
+        
+        divInfoCarrito.prepend(li)
+        totalPedidoValue += sabor.precioPorLitro
+        console.log(totalPedidoValue)
+        totalPedido.innerHTML = `
+                            <p>TOTAL: $${totalPedidoValue}</p>
+        `
+        li.classList.add('liashei')
+
+        carrito.push(sabor)
+        const carritoJSON = JSON.stringify(carrito)
+        localStorage.setItem('compra',carritoJSON)
+        
+        if(carrito.length >= 3){
+            crearEstadoOk()
+        }
+        else{
+            crearEstadoX()
+        }
+    }
+}
 
 // CONDICIONAL PARA SECCION 'PEDIDO'
 const crearEstadoOk = () => {
@@ -32,7 +71,6 @@ const carritoLS = localStorage.getItem('compra')
 
 if (carritoLS){
     const carrito = JSON.parse(carritoLS)
-
     if (carrito.length >= 3){
         crearEstadoOk()
     }
@@ -65,11 +103,15 @@ class Helados{
     }
 }
 
-sabores.push(new Helados ('Amarena', 1340, 'imgs/amarena.png'))
-sabores.push(new Helados ('Banana Script', 1470, 'imgs/bananasplit.png'))
-sabores.push(new Helados ('Chocolate', 1550, 'imgs/chocolate.png'))
-sabores.push(new Helados ('Crema Americana', 1200, 'imgs/cremaamericana.png'))
-sabores.push(new Helados ('Crema Cookie', 1350, 'imgs/cremacookie.png'))
+// MOCK API
+fetch("https://631146e019eb631f9d7010a3.mockapi.io/helados")
+    .then (res=> res.json())
+    .then ( (datos) => {
+        for (let sabor of datos){
+            pushearSabores(sabor)
+        }
+    })
+
 sabores.push(new Helados ('Crema del Cielo', 1300, 'imgs/cremadelcielo.png'))
 sabores.push(new Helados ('Dulce de Leche', 1700, 'imgs/ddl.png'))
 sabores.push(new Helados ('Flan', 1200, 'imgs/flan.png'))
@@ -81,44 +123,8 @@ sabores.push(new Helados ('Mascarpone', 1560, 'imgs/mascarpone.png'))
 sabores.push(new Helados ('Tramontana', 1510, 'imgs/tramontana.png'))
 sabores.push(new Helados ('Vainilla', 1490, 'imgs/vainilla.png'))
 
-
 sabores.forEach((sabor)=>{
-    const div = document.createElement('div')
-    div.innerHTML = `
-    <img id="imagenHelado" src="${sabor.imagen}" width="50px">
-    <h3 id="nombreHelado">${sabor.nombre}</h3>
-    <h3 id="precioHelado">$${sabor.precioPorLitro}</h3>
-    <h3 id="litroHelado">1L</h4>      
-    `
-    div.classList.add('divHeladoInfo')
-    modal.append(div)
-    
-    div.onclick = () => {
-        const li = document.createElement('li')
-        li.innerHTML = `
-                        ${sabor.nombre} $${sabor.precioPorLitro}
-        `
-        
-        divInfoCarrito.append(li)
-        totalPedidoValue += sabor.precioPorLitro
-        console.log(totalPedidoValue)
-        totalPedido.innerHTML = `
-                            <p>TOTAL: $${totalPedidoValue}</p>
-        `
-        li.classList.add('liashei')
-
-        carrito.push(sabor)
-        // console.log(carrito)
-        const carritoJSON = JSON.stringify(carrito)
-        localStorage.setItem('compra',carritoJSON)
-        
-        if(carrito.length >= 3){
-            crearEstadoOk()
-        }
-        else{
-            crearEstadoX()
-        }
-    }
+    pushearSabores(sabor)
 })
 
 // MODAL PEDIDOS
@@ -159,26 +165,27 @@ pagar.onclick=()=>{
 }
 
 const button7 = document.querySelector('.button7')
- button7.onclick = () => {
+button7.onclick = () => {
     modalPagar.classList.toggle('modalPagar--active')
- }
+}
 
- const nombre = document.querySelector('#nombre')
- const apellido = document.querySelector('#apellido')
- const dni = document.querySelector('#dni')
- const tipotarjeta = document.querySelector('#tipotarjeta')
- const numtarjeta = document.querySelector('#numtarjeta')
- const botonPagar = document.querySelector('#botonPagar')
+const nombre = document.querySelector('#nombre')
+const apellido = document.querySelector('#apellido')
+const dni = document.querySelector('#dni')
+const tipotarjeta = document.querySelector('#tipotarjeta')
+const numtarjeta = document.querySelector('#numtarjeta')
+const botonPagar = document.querySelector('#botonPagar')
 
- botonPagar.onclick=()=>{
+botonPagar.onclick=()=>{
     Toastify({
-       text: 'Pago procesado ✅',
+        text: 'Pago procesado ✅',
        duration: 3000,
        gravity: 'bottom',
        position: 'right',
        style:{
-        background: 'green'
-       },
-       className:'toast',
+           background: 'green'
+        },
+        className:'toast',
     }).showToast()
- }
+}
+
