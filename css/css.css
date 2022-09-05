@@ -606,7 +606,7 @@ label{
     
  }
 
- @media screen and (min-width:0px) and (max-width:767px){
+ @media screen and (min-width:1px) and (max-width:767px){
     .main__section{
         width: 60%;
         grid-template-columns: 1fr;
