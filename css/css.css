@@ -608,19 +608,23 @@ label{
 
  @media screen and (min-width:1px) and (max-width:767px){
     .main__section{
-        width: 60%;
+        width: 80%;
         grid-template-columns: 1fr;
-        grid-template-rows: 0.6fr 1.4fr 0.5fr 0.5fr;
-        margin-bottom: 20px;
+        grid-template-rows: 0.5fr 1.4fr 0.5fr 0.5fr;
+
+    }
+
+    #logo {
+        width: 200px;
     }
 
     .contenedorModal__modal{
-        width: 80%;
-        height: 70%;
+        width: 90%;
+
     }
     
      #div1,#div2,#div3,#div4{
-        border-radius: 0px 0px 0px 0px;
+        border: 0px;
     }
 
     #button1{
@@ -643,10 +647,10 @@ label{
     
     .divCarrito{
         width: 200px;
-        height: 75px;
+        height: 50px;
         font-size: 1rem;
-        margin-top: 7px;
-        margin-bottom: 7px;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
     
     .divInfoCarrito{
@@ -674,18 +678,22 @@ label{
     }
     
     .modalPagar__modal{
-        width: 60%;
+        width: 80%;
     }
     
     .button7{
         width: 150px;
-        height: 100px;
+        height: 80px;
         font-size: 2rem;
     }
 
       #formulario{
         font-size: 1rem;
+        width: 95%;
       }
     
+    #botonPagar{
+        height: 80px;
+    }
  }
     
