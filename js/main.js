@@ -177,15 +177,31 @@ const numtarjeta = document.querySelector('#numtarjeta')
 const botonPagar = document.querySelector('#botonPagar')
 
 botonPagar.onclick=()=>{
-    Toastify({
-        text: 'Pago procesado ✅',
-       duration: 3000,
-       gravity: 'bottom',
-       position: 'right',
-       style:{
-           background: 'green'
-        },
-        className:'toast',
-    }).showToast()
+    if(nombre.value.length != 0 && apellido.value.length != 0 && dni.value.length >= 8 && numtarjeta.value.length >= 8){
+        Toastify({
+            text: 'Pago procesado ✅',
+           duration: 3000,
+           gravity: 'bottom',
+           position: 'right',
+           style:{
+               background: 'green'
+            },
+            className:'toast',
+        }).showToast()
+    }
+    else{
+        Toastify({
+            text: 'Datos incorrectos ❌',
+           duration: 3000,
+           gravity: 'bottom',
+           position: 'right',
+           style:{
+               background: 'red'
+            },
+            className:'toast',
+        }).showToast()
+    }
+
+
 }
 
