@@ -3,7 +3,8 @@ const div3 = document.querySelector('#div3')
 const modalInicio = document.querySelector('.modalInicio')
 setTimeout(()=>{
     modalInicio.classList.remove('modalInicio--active')
-},0)
+},2000)
+
 
 // FUNCION PUSHEAR SABORES
 const pushearSabores = (sabor) =>{
@@ -41,6 +42,17 @@ const pushearSabores = (sabor) =>{
         else{
             crearEstadoX()
         }
+        Toastify({
+            text: 'Pedido agregado!🍦',
+           duration: 2000,
+           gravity: 'bottom',
+           position: 'right',
+           style:{
+               background: 'orange'
+            },
+            className:'toast',
+        }).showToast()
+        
     }
 }
 
@@ -69,6 +81,16 @@ let carrito = []
 let totalPedidoValue = 0
 const carritoLS = localStorage.getItem('compra')
 
+let carritoGuardado = localStorage.getItem('compra')
+
+// traer del ls el carrito
+if (carritoGuardado){
+    carritoGuardado = JSON.parse(carritoGuardado)
+    for (let saborGuardado of carritoGuardado){
+        carrito.push(saborGuardado)
+    }
+}
+
 if (carritoLS){
     const carrito = JSON.parse(carritoLS)
     if (carrito.length >= 3){
@@ -92,7 +114,7 @@ if (carritoLS){
     }
 } 
 else{
-    console.log('no hay nada guardado en el carrito')
+    console.log('No hay nada guardado en el carrito')
 }
 
 class Helados{
@@ -102,6 +124,8 @@ class Helados{
         this.imagen = imagen
     }
 }
+
+
 
 // MOCK API
 fetch("https://631146e019eb631f9d7010a3.mockapi.io/helados")
@@ -161,7 +185,21 @@ const pagar = document.querySelector('#button6')
 const modalPagar = document.querySelector('.modalPagar')
 
 pagar.onclick=()=>{
-    modalPagar.classList.toggle('modalPagar--active')
+    if(totalPedidoValue > 0){
+        modalPagar.classList.toggle('modalPagar--active')
+    }
+    else{
+        Toastify({
+            text: 'Tu carrito está vacío 🛒',
+           duration: 4000,
+           gravity: 'bottom',
+           position: 'right',
+           style:{
+               background: 'blue'
+            },
+            className:'toast',
+        }).showToast()
+    }
 }
 
 const button7 = document.querySelector('.button7')
@@ -180,7 +218,17 @@ botonPagar.onclick=()=>{
     if(nombre.value.length != 0 && apellido.value.length != 0 && dni.value.length >= 8 && numtarjeta.value.length >= 8){
         Toastify({
             text: 'Pago procesado ✅',
-           duration: 3000,
+           duration: 4000,
+           gravity: 'bottom',
+           position: 'right',
+           style:{
+               background: 'green'
+            },
+            className:'toast',
+        }).showToast()
+        Toastify({
+            text: 'Gracias por tu compra!',
+           duration: 4000,
            gravity: 'bottom',
            position: 'right',
            style:{
@@ -192,7 +240,7 @@ botonPagar.onclick=()=>{
     else{
         Toastify({
             text: 'Datos incorrectos ❌',
-           duration: 3000,
+           duration: 4000,
            gravity: 'bottom',
            position: 'right',
            style:{
@@ -201,7 +249,4 @@ botonPagar.onclick=()=>{
             className:'toast',
         }).showToast()
     }
-
-
 }
-
